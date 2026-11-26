@@ -14,7 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
     private WebView webView;
-    private static final String SITE_URL = "https://SENIN_KULLANICI_ADIN.pythonanywhere.com";
+    private static final String SITE_URL = "VSDVAR.pythonanywhere.com";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
