@@ -1,0 +1,33 @@
+name: Build ROTA APK
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Kodu
+        uses: actions/checkout@v4
+
+      - name: JDK 17 Kurulumu
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Gradle Kurulumu ve APK Derleme
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: '8.5'
+
+      - name: APK Oluştur
+        run: gradle assembleDebug
+
+      - name: APK Dosyasını Yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: ROTA-LGS-App
+          path: app/build/outputs/apk/debug/app-debug.apk
